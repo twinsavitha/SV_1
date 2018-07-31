@@ -41,6 +41,7 @@ pipeline {
                 sh 'printenv'
                 echo "${params.PERSON}"
                 echo "Hi"
+                echo "Hi2 ${params.PERSON}"
             }
         }
     }
