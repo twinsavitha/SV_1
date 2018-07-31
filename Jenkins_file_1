@@ -13,6 +13,8 @@ def notifyStash(String state, String commitSha1) {
         currentBuild.result = state
     }
     echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    def sha = sh(returnStdout: true, script: "cat ${commitSha1}").trim()
+    echo "CCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
 }
 
 pipeline {
