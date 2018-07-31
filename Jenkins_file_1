@@ -17,6 +17,16 @@ def notifyStash(String state, String commitSha1) {
     echo "CCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
     echo "notify for commit - ${sha} | ${state}"
     echo "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+    step([$class: 'StashNotifier',
+          commitSha1: "${sha}",
+          credentialsId: '21a9198e-d816-4fab-904c-de370128bd01',
+          disableInprogressNotification: false,
+          ignoreUnverifiedSSLPeer: true,
+          includeBuildNumberInKey: false,
+          prependParentProjectKey: false,
+          projectKey: '',
+          stashServerBaseUrl: 'https://lco-eng-stash.colo.seagate.com:8443'])
+    echo "EEEEEEEEEEEEEEEEEEEEEEEEEEEEE"      
 }
 
 pipeline {
