@@ -5,7 +5,7 @@ pipeline {
             echo 'I will always say Hello again!'
         }
         success {
-            echo "Post::Success
+            echo "Post::Success"
         }
     }
 }
