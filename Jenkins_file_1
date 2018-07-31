@@ -3,6 +3,9 @@ pipeline {
     environment {
         CC = "Clang"
     }
+    parameters{
+        string(name: 'PERSON', defaultValue: 'Savi', description: 'My name')
+    }
     stages {
         stage('Example') {
             environment {
@@ -11,7 +14,7 @@ pipeline {
             steps {
                 echo 'Hello World'
                 sh 'printenv'
-                echo 'Hi'
+                echo 'Hi ${params.PERSON}'
             }
         }
     }
