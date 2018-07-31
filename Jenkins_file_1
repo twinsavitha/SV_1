@@ -99,7 +99,9 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                echo "Hello WOrld 2"
+                echo "Hello World 2"
+                def sha2 = sh(returnStdout: true, script: "pwd").trim()
+                echo "${sha2}"
             }
         }
     }
