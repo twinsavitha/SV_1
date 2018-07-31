@@ -106,6 +106,14 @@ pipeline {
                 }
             }
         }
+        stage('Setup Environment') {
+            steps {
+                sh '''shopt -s extglob
+                mkdir -p ${KINETIC_DIR}
+                cp -as ${WORKSPACE}/${KINETIC_DIR} ${WORKSPACE}/${ARM_DIR}
+                cp -as ${WORKSPACE}/${KINETIC_DIR} ${WORKSPACE}/${X86_DIR}'''
+            }
+        }
     }
     post { 
         always { 
