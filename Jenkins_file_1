@@ -87,6 +87,13 @@ pipeline {
                     echo "55555555555555555555555555555555"
                     stashCheckout('/home/savitha/uboot-linux-lamarr', "${params.UBOOT_LINUX_BRANCHES}")
                     echo "66666666666666666666666666666666"
+                    sh "git rev-parse HEAD > ${env.UBOOT_COMMIT}" 
+                    echo "77777777777777777777777777777777"
+                    echo "1: ENV_UBOOT_COMMIT   ${env.UBOOT_COMMIT}"
+                    echo "88888888888888888888888888888888"
+                    notifyStash('', "${env.UBOOT_COMMIT}")
+                    echo "99999999999999999999999999999999"
+                    
                 }
             }
         }
