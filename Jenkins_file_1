@@ -108,7 +108,6 @@ pipeline {
         }
         stage('Setup Environment') {
             steps {
-                sh '''shopt -s extglob
                 echo "101010101010101010101010101010101010"
             }
         }
