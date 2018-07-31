@@ -39,9 +39,10 @@ pipeline {
             steps {
                 echo 'Hello World'
                 sh 'printenv'
-                echo "${params.PERSON}"
-                echo "Hi"
                 echo "Hi2 ${params.PERSON}"
+            }
+            steps {
+                echo "Hiiiiiiiiiii"
             }
         }
     }
