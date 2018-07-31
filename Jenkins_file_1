@@ -100,8 +100,10 @@ pipeline {
         stage('Lint') {
             steps {
                 echo "Hello World 2"
-                def sha2 = sh(returnStdout: true, script: "pwd").trim()
-                echo "${sha2}"
+                dir("${env.KINETIC_DIR}") {
+                    echo 'Linting....'
+                    sh './lint.sh 2>&1'
+                }
             }
         }
     }
