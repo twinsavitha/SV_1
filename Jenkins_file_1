@@ -85,6 +85,8 @@ pipeline {
                 
                 dir("${env.UBOOT_LINUX_DIR}") {
                     echo "55555555555555555555555555555555"
+                    stashCheckout('/home/savitha/uboot-linux-lamarr', "${params.UBOOT_LINUX_BRANCHES}")
+                    echo "66666666666666666666666666666666"
                 }
             }
         }
