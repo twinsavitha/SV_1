@@ -40,9 +40,13 @@ pipeline {
                 echo 'Hello World'
                 sh 'printenv'
                 echo "Hi2 ${params.PERSON}"
-            }
-            steps {
-                echo "Hiiiiiiiiiii"
+                
+                dir("${env.KINETIC_DIR}") {
+                    echo '111111111111111111111111111111111111111111111'
+                    sh "git rev-parse HEAD > ${env.KINETIC_COMMIT}"
+                    echo "333333333333333333333333333333333333333333333"
+                    echo "1: ENV_KINETIC_DIR   ${env.KINETIC_COMMIT}"
+                }
             }
         }
     }
