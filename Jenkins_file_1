@@ -97,6 +97,11 @@ pipeline {
                 }
             }
         }
+        stage('Lint') {
+            steps {
+                echo "Hello WOrld 2"
+            }
+        }
     }
     post { 
         always { 
