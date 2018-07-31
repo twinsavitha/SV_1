@@ -1,9 +1,17 @@
 pipeline {
     agent any
+    environment {
+        CC = "Clang"
+    }
     stages {
         stage('Example') {
+            environment {
+                CC = "Clang"
+            }
             steps {
                 echo 'Hello World'
+                sh 'printenv'
+                echo 'Hi'
             }
         }
     }
