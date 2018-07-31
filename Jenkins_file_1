@@ -7,6 +7,14 @@ def stashCheckout(String repositoryUrl, String branches) {
               userRemoteConfigs: [[credentialsId: '21a9198e-d816-4fab-904c-de370128bd01', url: "${repositoryUrl}"]]])
 }
 
+def notifyStash(String state, String commitSha1) {
+    echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    if ('SUCCESS' == state || 'FAILED' == state) {
+        currentBuild.result = state
+    }
+    echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+}
+
 pipeline {
     agent any
     triggers {
@@ -56,6 +64,9 @@ pipeline {
                     echo "22222222222222222222222222222222"
                     sh "git rev-parse HEAD > ${env.KINETIC_COMMIT}"
                     echo "33333333333333333333333333333333"
+                    notifyStash('', "${env.KINETIC_COMMIT}")
+                    echo "44444444444444444444444444444444"
+                    
                 }
             }
         }
