@@ -1,11 +1,36 @@
 pipeline {
     agent any
+    triggers {
+        pollSCM('H 0 1 1 0')
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr:'100'))
+    }
+
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Savi', description: 'My name')
+        string(name: 'HA_DEVICE', defaultValue: '/dev/sdb', description: 'HA Lamarr device path')
+        string(name: 'UBOOT_LINUX_BRANCHES', defaultValue: 'master', description: 'uboot-linux-lamarr branches that should be built')
+        string(name: 'KINETICD_BRANCHES', defaultValue: '**', description: 'kineticd-lamarr branches that should be built')
+        string(name: 'KINETIC_IPADDR', defaultValue: '172.16.0.51', description: 'IP address of the kinetic device')
+    }
+    
     environment {
         CC = "Clang"
+        DEPENDENCIES_PATH = '/var/lib/jenkins/kv-jenkins-dependencies'
+        KV_CI_SCRIPTS = "${DEPENDENCIES_PATH}/continuous-integration/scripts"
+        UBOOT_LINUX_PATH = "${DEPENDENCIES_PATH}/uboot-linux-lamarr"
+        KV_PYTHON_PATH = "${DEPENDENCIES_PATH}/python"
+        KINETIC_DIR = 'kineticd-lamarr'
+        UBOOT_LINUX_DIR = 'uboot-linux-lamarr'
+        BUILD_OUTPUT_PATH = 'EmbeddedBuildComponents/Individual-Components/Installer/'
+        ARM_DIR = 'arm'
+        X86_DIR = 'x86'
+        KINETIC_COMMIT = '${WORKSPACE}/kinetic_commit.txt'
+        UBOOT_COMMIT = '${WORKSPACE}/uboot_commit.txt'
     }
-    parameters{
-        string(name: 'PERSON', defaultValue: 'Savi', description: 'My name')
-    }
+    
     stages {
         stage('Example') {
             environment {
