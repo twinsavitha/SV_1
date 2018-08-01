@@ -43,7 +43,7 @@ pipeline {
         string(name: 'PERSON', defaultValue: 'Savi', description: 'My name')
         string(name: 'HA_DEVICE', defaultValue: '/dev/sdb', description: 'HA Lamarr device path')
         string(name: 'UBOOT_LINUX_BRANCHES', defaultValue: 'master', description: 'uboot-linux-lamarr branches that should be built')
-        string(name: 'KINETICD_BRANCHES', defaultValue: '**', description: 'kineticd-lamarr branches that should be built')
+        string(name: 'KINETICD_BRANCHES', defaultValue: 'firmware_update', description: 'kineticd-lamarr branches that should be built')
         string(name: 'KINETIC_IPADDR', defaultValue: '172.16.0.51', description: 'IP address of the kinetic device')
     }
     
