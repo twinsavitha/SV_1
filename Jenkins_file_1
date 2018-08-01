@@ -4,7 +4,7 @@ def stashCheckout(String repositoryUrl, String branches) {
               doGenerateSubmoduleConfigurations: false,
               extensions: [[$class: 'CleanCheckout']],
               submoduleCfg: [],
-              userRemoteConfigs: [[credentialsId: '21a9198e-d816-4fab-904c-de370128bd01', url: "${repositoryUrl}"]]])
+              userRemoteConfigs: [[credentialsId: '0a067f91-f4be-4b9f-8b46-72b90f908e48', url: "${repositoryUrl}"]]])
 }
 
 def notifyStash(String state, String commitSha1) {
@@ -17,10 +17,9 @@ def notifyStash(String state, String commitSha1) {
     echo "CCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
     echo "notify for commit - ${sha} | ${state}"
     echo "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    sh "cd /var/lib/jenkins/workspace/Pipeline_1/kineticd-lamarr && git branch -a && git checkout origin/firmware_update && git branch"
     step([$class: 'StashNotifier',
           commitSha1: "${sha}",
-          credentialsId: '21a9198e-d816-4fab-904c-de370128bd01',
+          credentialsId: '0a067f91-f4be-4b9f-8b46-72b90f908e48',
           disableInprogressNotification: false,
           ignoreUnverifiedSSLPeer: true,
           includeBuildNumberInKey: false,
@@ -44,7 +43,7 @@ pipeline {
         string(name: 'PERSON', defaultValue: 'Savi', description: 'My name')
         string(name: 'HA_DEVICE', defaultValue: '/dev/sdb', description: 'HA Lamarr device path')
         string(name: 'UBOOT_LINUX_BRANCHES', defaultValue: 'master', description: 'uboot-linux-lamarr branches that should be built')
-        string(name: 'KINETICD_BRANCHES', defaultValue: 'refs/heads/firmware_update', description: 'kineticd-lamarr branches that should be built')
+        string(name: 'KINETICD_BRANCHES', defaultValue: '**', description: 'kineticd-lamarr branches that should be built')
         string(name: 'KINETIC_IPADDR', defaultValue: '172.16.0.51', description: 'IP address of the kinetic device')
     }
     
