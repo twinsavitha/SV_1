@@ -17,7 +17,7 @@ def notifyStash(String state, String commitSha1) {
     echo "CCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
     echo "notify for commit - ${sha} | ${state}"
     echo "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    sh "cd ${env.KINETIC_DIR} && git branch"
+    sh "cd /var/lib/jenkins/workspace/Pipeline_1/kineticd-lamarr && git branch"
     step([$class: 'StashNotifier',
           commitSha1: "${sha}",
           credentialsId: '21a9198e-d816-4fab-904c-de370128bd01',
