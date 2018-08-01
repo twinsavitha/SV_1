@@ -25,7 +25,7 @@ def notifyStash(String state, String commitSha1) {
           includeBuildNumberInKey: false,
           prependParentProjectKey: false,
           projectKey: '',
-          stashServerBaseUrl: 'https://lco-eng-stash.colo.seagate.com:8443'])
+          stashServerBaseUrl: 'ssh://git@lco-eng-stash.colo.seagate.com:7999'])
     echo "EEEEEEEEEEEEEEEEEEEEEEEEEEEEE"      
 }
 
