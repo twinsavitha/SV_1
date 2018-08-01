@@ -110,6 +110,8 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 echo "101010101010101010101010101010101010"
+                echo "${KINETIC_DIR}"
+                echo "111111111111111111111111111111111110"
             }
         }
     }
