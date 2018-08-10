@@ -45,10 +45,9 @@ pipeline {
                 echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                 echo "Hi3 ${params.Firmware_file_list}"
                 echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-                sh "python 1.py -f ${params.Firmware_file_list}"
+                sh "python 1.py -f ${params.Firmware_file_list} -t target_value"
             }
         }
-        
     }
     post { 
         always { 
