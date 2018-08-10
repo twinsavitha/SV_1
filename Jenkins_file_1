@@ -45,7 +45,7 @@ pipeline {
                 echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                 echo "Hi3 ${params.Firmware_file_list}"
                 echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-                sh "python 1.py"
+                sh "python 1.py -f ${params.Firmware_file_list}"
             }
         }
         
