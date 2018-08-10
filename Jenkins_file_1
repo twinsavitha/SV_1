@@ -1,34 +1,3 @@
-def stashCheckout(String repositoryUrl, String branches) {
-    checkout([$class: 'GitSCM',
-              branches: [[name: "${branches}"]],
-              doGenerateSubmoduleConfigurations: false,
-              extensions: [[$class: 'CleanCheckout']],
-              submoduleCfg: [],
-              userRemoteConfigs: [[credentialsId: '9fd3bf6d-dd7b-4b82-940f-fbdf54a23d9f', url: "${repositoryUrl}"]]])
-}
-
-def notifyStash(String state, String commitSha1) {
-    echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-    if ('SUCCESS' == state || 'FAILED' == state) {
-        currentBuild.result = state
-    }
-    echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    def sha = sh(returnStdout: true, script: "cat ${commitSha1}").trim()
-    echo "CCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
-    echo "notify for commit - ${sha} | ${state}"
-    echo "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    step([$class: 'StashNotifier',
-          commitSha1: "${sha}",
-          credentialsId: '9fd3bf6d-dd7b-4b82-940f-fbdf54a23d9f',
-          disableInprogressNotification: false,
-          ignoreUnverifiedSSLPeer: true,
-          includeBuildNumberInKey: false,
-          prependParentProjectKey: false,
-          projectKey: '',
-          stashServerBaseUrl: 'https://lco-eng-stash.colo.seagate.com:8443'])
-    echo "EEEEEEEEEEEEEEEEEEEEEEEEEEEEE"      
-}
-
 pipeline {
     agent any
     triggers {
@@ -41,6 +10,7 @@ pipeline {
 
     parameters {
         string(name: 'PERSON', defaultValue: 'Savi', description: 'My name')
+        string(name: 'Firmware_file_list', defaultValue: 'default_list_value', description: 'My name')
         string(name: 'HA_DEVICE', defaultValue: '/dev/sdb', description: 'HA Lamarr device path')
         string(name: 'UBOOT_LINUX_BRANCHES', defaultValue: 'master', description: 'uboot-linux-lamarr branches that should be built')
         string(name: 'KINETICD_BRANCHES', defaultValue: 'firmware_update', description: 'kineticd-lamarr branches that should be built')
@@ -72,6 +42,9 @@ pipeline {
                 echo 'Hello World'
                 sh 'printenv'
                 echo "Hi2 ${params.PERSON}"
+                exho "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                echo "Hi3 ${params.Firmware_file_list}"
+                echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
             }
         }
         
