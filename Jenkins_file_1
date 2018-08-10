@@ -45,6 +45,7 @@ pipeline {
                 echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                 echo "Hi3 ${params.Firmware_file_list}"
                 echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+                sh "sudo python 1.py"
             }
         }
         
