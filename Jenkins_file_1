@@ -42,7 +42,7 @@ pipeline {
                 echo 'Hello World'
                 sh 'printenv'
                 echo "Hi2 ${params.PERSON}"
-                exho "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                 echo "Hi3 ${params.Firmware_file_list}"
                 echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
             }
