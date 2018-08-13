@@ -47,21 +47,12 @@ pipeline {
                 echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
                 sh "python 1.py -f ${params.Firmware_file_list} -t target_value"
                 echo "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
-                echo "Hi 4 ${params.new_param}"
+                echo "Hi 4 ${params.aaa}"
             }
         }
     }
     post { 
-        always { 
-            echo 'I will always say Hello again!'
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-                to: 'sase8052@colorado.edu'
-        }
-        success {
-            echo "Post::Success"
-        }
+        
     }
 }
 
