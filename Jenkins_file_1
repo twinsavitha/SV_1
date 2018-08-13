@@ -48,7 +48,7 @@ pipeline {
                 }
                 echo "Echoing res"
                 echo res
-                echo ${params.aaa}
+                echo "${params.aaa}"
             }
         }
         stage('Example') {
