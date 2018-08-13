@@ -40,15 +40,8 @@ pipeline {
                     if ((params.aaa == "" )|| (params.aaa == null )) {
                         currentBuild.result = 'ABORTED'
                         error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
-                        res = "fail"
-                    }
-                    else {
-                        res = "pass"
                     }
                 }
-                echo "Echoing res"
-                echo res
-                echo "${params.aaa}"
             }
         }
         stage('Example') {
