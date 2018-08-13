@@ -47,12 +47,17 @@ pipeline {
                 echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
                 sh "python 1.py -f ${params.Firmware_file_list} -t target_value"
                 echo "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
-                echo "Hi 4 ${params.aaa}"
+                echo "Hi 4 ${params.bbb}"
             }
         }
     }
     post { 
-        
+        always { 
+            echo 'I will always say Hello again!'
+        }
+        success {
+            echo "Post::Success"
+        }
     }
 }
 
