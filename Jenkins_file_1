@@ -37,7 +37,7 @@ pipeline {
         stage ("parameterizing") {
             steps {
                 script{
-                    if (("${params.aaa}" == "" )|| ("${params.aaa}" == null )) {
+                    if ((params.aaa == "" )|| (params.aaa == null )) {
                         currentBuild.result = 'ABORTED'
                         error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
                         res = "fail"
