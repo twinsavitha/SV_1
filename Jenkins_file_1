@@ -38,11 +38,21 @@ pipeline {
             steps {
                 script{
                     print "AAAAAAAAAAAAAAAAAAAA"
-                    def list_name = ["aaa", "bbb"]
+                    def list_name = ["aaa", "bbb","PERSON", "Firmware_file_list","HA_DEVICE","UBOOT_LINUX_BRANCHES","KINETICD_BRANCHES","KINETIC_IPADDR"]
                     for(i in list_name) {
                     	if(params.containsKey(i)) {
                     	    println params[i]
+                    	    if (params[i] == "")
+                    	    {
+                    	        currentBuild.result = 'ABORTED'
+                                error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
+                    	    }
                     	}
+                    	else
+                    	{
+                    	    currentBuild.result = 'ABORTED'
+                            error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
+                        }
                     }
                     
                     print "BBBBBBBBBBBBBBBBBBBB"
