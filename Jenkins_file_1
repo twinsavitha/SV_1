@@ -38,13 +38,12 @@ pipeline {
             steps {
                 script{
                     print "AAAAAAAAAAAAAAAAAAAA"
-                    for(entry in params) {
-                        println entry.key
-                        println entry.value
-                        if ((entry.value == "" )|| (entry.value == null )) {
-                            currentBuild.result = 'ABORTED'
-                            error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
-                        }
+                    def list_name = ["aaa", "bbb"]
+                    
+                    for(entry in list_name) {
+                        println entry
+                        println params.entry
+                        
                     }
                     print "BBBBBBBBBBBBBBBBBBBB"
                 }
