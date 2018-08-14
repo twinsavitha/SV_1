@@ -58,6 +58,8 @@ pipeline {
                 sh "python 1.py -f ${params.Firmware_file_list} -t target_value"
                 echo "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
                 echo "Hi 4 ${params.bbb}"
+                echo "All params"
+                echo "${params}"
             }
         }
     }
