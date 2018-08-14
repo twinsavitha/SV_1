@@ -44,12 +44,14 @@ pipeline {
                     	    println params[i]
                     	    if (params[i] == "")
                     	    {
+                    	        print "CCCCCCCCCCCCCCCCCCCCCCCCC"
                     	        currentBuild.result = 'ABORTED'
                                 error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
                     	    }
                     	}
                     	else
-                    	{
+                    	{   
+                    	    print "DDDDDDDDDDDDDDDDDDDDDDDDDDD"
                     	    currentBuild.result = 'ABORTED'
                             error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
                         }
