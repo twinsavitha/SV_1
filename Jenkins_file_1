@@ -42,7 +42,7 @@ pipeline {
                     
                     for(entry in list_name) {
                         println entry
-                        println params.entry
+                        println params.(entry)
                         
                     }
                     print "BBBBBBBBBBBBBBBBBBBB"
