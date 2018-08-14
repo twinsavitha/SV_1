@@ -39,12 +39,12 @@ pipeline {
                 script{
                     print "AAAAAAAAAAAAAAAAAAAA"
                     def list_name = ["aaa", "bbb"]
-                    
-                    for(entry in list_name) {
-                        println entry
-                        println params.(entry)
-                        
+                    for(i in list_name) {
+                    	if(params.containsKey(i)) {
+                    	    println params[i]
+                    	}
                     }
+                    
                     print "BBBBBBBBBBBBBBBBBBBB"
                 }
             }
