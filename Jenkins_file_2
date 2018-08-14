@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM('H 0 1 1 0')
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr:'100'))
+    }
+
+    stages {
+        stage("Parameters Check"){
+            steps {
+                script{
+                    print "AAAAAAAAAAAAAAAAAAAA"
+                    def required_params = ["HA_DEVICE", "UBOOT_LINUX_BRANCHES","KINETICD_BRANCHES", "SLOD_NAMES","KINETIC_IPADDR"]
+                    for(mandatory_param in required_params) {
+                        println params[mandatory_param]
+                        if(!(params.containsKey(mandatory_param)) || (params[mandatory_param] == "")) {
+                            currentBuild.result = 'ABORTED'
+                            error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
+                        }
+                    }
+                    print "BBBBBBBBBBBBBBBBBBBB"
+                }
+            }
+        }
+    }
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+        success {
+            echo "Post::Success"
+        }
+    }
+}
+
