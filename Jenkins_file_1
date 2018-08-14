@@ -37,14 +37,14 @@ pipeline {
         stage ("parameterizing") {
             steps {
                 script{
-                    if ((params.aaa == "" )|| (params.aaa == null )) {
-                        currentBuild.result = 'ABORTED'
-                        error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
-                    }
                     print "AAAAAAAAAAAAAAAAAAAA"
                     for(entry in params) {
                         println entry.key
                         println entry.value
+                        if ((entry.value == "" )|| (entry.value == null )) {
+                            currentBuild.result = 'ABORTED'
+                            error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
+                        }
                     }
                     print "BBBBBBBBBBBBBBBBBBBB"
                 }
