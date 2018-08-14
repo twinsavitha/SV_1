@@ -41,6 +41,12 @@ pipeline {
                         currentBuild.result = 'ABORTED'
                         error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
                     }
+                    print "AAAAAAAAAAAAAAAAAAAA"
+                    for(entry in params) {
+                        println entry.key
+                        println entry.value
+                    }
+                    print "BBBBBBBBBBBBBBBBBBBB"
                 }
             }
         }
