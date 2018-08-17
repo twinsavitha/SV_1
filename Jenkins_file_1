@@ -34,7 +34,7 @@ pipeline {
                         println params[i]
                         if(!(params.containsKey(i)) || (params[i] == "")) {
                             currentBuild.result = 'ABORTED'
-                            error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
+                            //error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
                         }
                     }
                     print "BBBBBBBBBBBBBBBBBBBB"
