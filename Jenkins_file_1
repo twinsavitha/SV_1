@@ -30,6 +30,8 @@ pipeline {
             steps {
                 script{
                     print "AAAAAAAAAAAAAAAAAAAA"
+                    LOCAL_BUILD_PATH = "Savitha_Senguttuvan"
+                    
                     def list_name = ["HA_DEVICE","UBOOT_LINUX_BRANCHES"]
                     for(i in list_name) {
                         println params[i]
@@ -58,6 +60,8 @@ pipeline {
                 echo "Hi 4 ${params.bbb}"
                 echo "All params"
                 echo "${params}"
+                echo "printing global variable"
+                echo LOCAL_BUILD_PATH
             }
         }
     }
