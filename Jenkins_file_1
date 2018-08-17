@@ -7,14 +7,7 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr:'100'))
     }
-    
-    parameters {
-        string(name: 'HA_DEVICE', defaultValue: '/dev/sdb', description: 'HA Lamarr device path')
-        string(name: 'UBOOT_LINUX_BRANCHES', defaultValue: 'master', description: 'uboot-linux-lamarr branches that should be built')
-        string(name: 'KINETICD_BRANCHES', defaultValue: 'tests/8.0.3_P2Plus', description: 'kineticd-lamarr branches that should be built')
-        string(name: 'SLOD_NAMES', defaultValue: 'kinetic-installer-v08.00.02.slod', description: 'Name of the slod files')
-        string(name: 'KINETIC_IPADDR', defaultValue: '172.16.0.51', description: 'IP address of the kinetic device')
-    }
+
     
     environment {
         CC = "Clang"
