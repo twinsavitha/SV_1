@@ -11,9 +11,6 @@ pipeline {
     stages {
         stage("Parameters Check"){
             steps {
-                    LOCAL_BUILD_PATH = "Savitha_Senguttuvan"
-                    echo "printing global variable"
-                    echo LOCAL_BUILD_PATH
                 script{
                     print "AAAAAAAAAAAAAAAAAAAA"
                     LOCAL_BUILD_PATH = "Savitha_Senguttuvan"
