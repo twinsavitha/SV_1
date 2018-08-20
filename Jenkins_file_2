@@ -11,6 +11,9 @@ pipeline {
     stages {
         stage("Parameters Check"){
             steps {
+                    LOCAL_BUILD_PATH = "Savitha_Senguttuvan"
+                    echo "printing global variable"
+                    echo LOCAL_BUILD_PATH
                 script{
                     print "AAAAAAAAAAAAAAAAAAAA"
                     LOCAL_BUILD_PATH = "Savitha_Senguttuvan"
@@ -29,6 +32,16 @@ pipeline {
                         sh "python 1.py -t ${LOCAL_BUILD_PATH} -f savi shiva"
                     }
                 //}
+                   /*
+                    def required_params = ["HA_DEVICE", "UBOOT_LINUX_BRANCHES","KINETICD_BRANCHES", "SLOD_NAMES","KINETIC_IPADDR"]
+                    for(mandatory_param in required_params) {
+                        println params[mandatory_param]
+                        if(!(params.containsKey(mandatory_param)) || (params[mandatory_param] == "")) {
+                            currentBuild.result = 'ABORTED'
+                            error('DRY RUN COMPLETED. JOB PARAMETERIZED.')
+                        }
+                    }
+                    */       
             }
         }
     }
