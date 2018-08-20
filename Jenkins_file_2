@@ -26,7 +26,7 @@ pipeline {
                     echo 'Running X86 unit tests....'
                     echo "Running unit tests against device ${LOCAL_BUILD_PATH}"
                     timeout(time: 1, unit: 'HOURS') {
-                        sh "sudo 1.py -t ${LOCAL_BUILD_PATH} -f savi shiva"
+                        sh "sudo python 1.py -t ${LOCAL_BUILD_PATH} -f savi shiva"
                     }
                 //}
             }
