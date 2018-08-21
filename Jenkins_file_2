@@ -7,6 +7,8 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr:'100'))
     }
+    
+    
 
     stages {
         stage("Parameters Check"){
@@ -17,6 +19,8 @@ pipeline {
                     echo "printing global variable"
                     echo LOCAL_BUILD_PATH
                     print "BBBBBBBBBBBBBBBBBBBB"
+                    echo "${WORKSPACE}/firmware_lists"
+                    print "CCCCCCCCCCCCCCCCCCCCCCCCCC"
                 }
             }
         }
