@@ -47,10 +47,9 @@ pipeline {
         }
     }
     post { 
-        always { 
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-                to: 'savitha.senguttuvan@seagate.com twinsavita@gmail.com'
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: 'Test', to: 'savitha.senguttuvan@colorado.edu'
+    
             echo 'I will always say Hello again!'
         }
         success {
