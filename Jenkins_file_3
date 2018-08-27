@@ -13,6 +13,9 @@ pipeline {
     
 
     stages {
+        stage ('Clean') {
+            deleteDir()
+        }
         stage("Parameters Check"){
             steps {
                 echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
