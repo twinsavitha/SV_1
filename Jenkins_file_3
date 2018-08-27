@@ -1,0 +1,45 @@
+def stashCheckout(String repositoryUrl, String branches) {
+    checkout([$class: 'GitSCM',
+              branches: [[name: "${branches}"]],
+              doGenerateSubmoduleConfigurations: false,
+              extensions: [[$class: 'CleanCheckout']],
+              submoduleCfg: [],
+              userRemoteConfigs: [[credentialsId: '21a9198e-d816-4fab-904c-de370128bd01', url: "${repositoryUrl}"]]])
+}
+
+
+pipeline {
+    agent any
+    triggers {
+        pollSCM('H 0 1 1 0')
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr:'100'))
+    }
+    
+    
+
+    stages {
+        stage("Parameters Check"){
+            steps {
+                echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                dir("${env.KINETIC_DIR}") {
+                    stashCheckout('ssh://git@lco-eng-stash.colo.seagate.com:7999/kin/kineticd-lamarr.git', "${params.KINETICD_BRANCHES}")
+                }
+            }
+        }
+        
+    }
+    post { 
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: 'Test', to: 'savitha.senguttuvan@colorado.edu'
+    
+            echo 'I will always say Hello again!'
+        }
+        success {
+            echo "Post::Success"
+        }
+    }
+}
+
