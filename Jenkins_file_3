@@ -1,11 +1,3 @@
-def stashCheckout(String repositoryUrl, String branches) {
-    checkout([$class: 'GitSCM',
-              branches: [[name: "${branches}"]],
-              doGenerateSubmoduleConfigurations: false,
-              extensions: [[$class: 'CleanCheckout']],
-              submoduleCfg: [],
-              userRemoteConfigs: [[credentialsId: '21a9198e-d816-4fab-904c-de370128bd01', url: "${repositoryUrl}"]]])
-}
 
 
 pipeline {
@@ -25,7 +17,10 @@ pipeline {
             steps {
                 echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                 dir("${env.KINETIC_DIR}") {
-                    stashCheckout('ssh://git@lco-eng-stash.colo.seagate.com:7999/kin/kineticd-lamarr.git', "${params.KINETICD_BRANCHES}")
+                    git(
+                       url: 'https://github.com/twinsavitha/allkiba.git',
+                       branch: "master"
+                    )
                 }
             }
         }
