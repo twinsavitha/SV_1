@@ -13,11 +13,6 @@ pipeline {
     
 
     stages {
-        stage ('Clean') {
-            steps {
-                deleteDir()
-            }
-        }
         stage("Parameters Check"){
             steps {
                 echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -35,6 +30,7 @@ pipeline {
         always {
             echo "Post::Always"    
             //sh 'git clean -xfdf'
+            deleteDir()
         }
         success {
             echo "Post::Success"
