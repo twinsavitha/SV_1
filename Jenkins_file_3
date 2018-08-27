@@ -14,7 +14,9 @@ pipeline {
 
     stages {
         stage ('Clean') {
-            deleteDir()
+            steps {
+                deleteDir()
+            }
         }
         stage("Parameters Check"){
             steps {
