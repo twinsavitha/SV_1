@@ -28,9 +28,7 @@ pipeline {
     }
     post { 
         always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'CulpritsRecipientProvider']], subject: 'Test', to: 'savitha.senguttuvan@colorado.edu'
-    
-            echo 'I will always say Hello again!'
+            sh 'sudo git clean -xfdf'
         }
         success {
             echo "Post::Success"
