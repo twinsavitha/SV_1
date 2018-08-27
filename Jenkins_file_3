@@ -28,6 +28,7 @@ pipeline {
     }
     post { 
         always {
+            echo "Post::Always"    
             //sh 'git clean -xfdf'
         }
         success {
