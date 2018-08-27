@@ -28,7 +28,7 @@ pipeline {
     }
     post { 
         always {
-            sh 'sudo git clean -xfdf'
+            sh 'git clean -xfdf'
         }
         success {
             echo "Post::Success"
