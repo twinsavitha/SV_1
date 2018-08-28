@@ -17,7 +17,8 @@ pipeline {
         stage("Parameters Check"){
             steps {
                 echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                
+                echo 'Clean the job in the workspace'
+                sh "sudo rm -rf !(pipeline|scripts|firmware_lists)"
             }
         }
         
