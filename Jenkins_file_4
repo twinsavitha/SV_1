@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM('H 0 1 1 0')
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr:'100'))
+    }
+    stages {
+        stage("Parameters Check"){
+            steps {
+                script{
+                    print "AAAAAAAAAAAAAAAAAAAA"
+                    LOCAL_BUILD_PATH = "Savitha_Senguttuvan"
+                    echo "printing global variable"
+                    echo LOCAL_BUILD_PATH
+                    print "BBBBBBBBBBBBBBBBBBBB"
+                    echo "${WORKSPACE}/firmware_lists"
+                    print "CCCCCCCCCCCCCCCCCCCCCCCCCC"
+                }
+            }
+        }
+    }
+    post { 
+        always {
+            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+               to: 'savitha.senguttuvan@seagate.com'
+        }
+        success {
+            echo "Post::Success"
+        }
+    }
+}
+
+always { 
+            
+        }
