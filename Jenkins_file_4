@@ -18,6 +18,10 @@ pipeline {
                     print "BBBBBBBBBBBBBBBBBBBB"
                     echo "${WORKSPACE}/firmware_lists"
                     print "CCCCCCCCCCCCCCCCCCCCCCCCCC"
+                    def causes = currentBuild.rawBuild.getCauses()
+                    def specificCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
+                    print cause
+                    print specificCause
                 }
             }
         }
