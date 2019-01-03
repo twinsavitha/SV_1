@@ -18,7 +18,8 @@ pipeline {
                     print "BBBBBBBBBBBBBBBBBBBB"
                     echo "${WORKSPACE}/firmware_lists"
                     print "CCCCCCCCCCCCCCCCCCCCCCCCCC"
-                    echo "${currentBuild.getBuildCauses()}" // same as currentBuild.getBuildCauses()
+                    //echo "${currentBuild.getBuildCauses()}" // same as currentBuild.getBuildCauses()
+                    echo "${currentBuild.rawBuild.getCauses()}"
                     print "DDDDDDDDDDDDDDDDDDDD"
                     echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
                     print "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
