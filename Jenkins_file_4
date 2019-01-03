@@ -22,6 +22,7 @@ pipeline {
                     echo "${currentBuild.rawBuild.getCauses()}"
                     print "DDDDDDDDDDDDDDDDDDDD"
                     def a = currentBuild.rawBuild.getCauses()
+                    print a
                     //echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
                     //print "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
                     //echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
