@@ -18,10 +18,16 @@ pipeline {
                     print "BBBBBBBBBBBBBBBBBBBB"
                     echo "${WORKSPACE}/firmware_lists"
                     print "CCCCCCCCCCCCCCCCCCCCCCCCCC"
-                    def causes = currentBuild.rawBuild.getCauses()
-                    def specificCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
-                    print cause
-                    print specificCause
+                    echo "${currentBuild.buildCauses}" // same as currentBuild.getBuildCauses()
+                    print "DDDDDDDDDDDDDDDDDDDD"
+                    echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
+                    print "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+                    echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
+                    print "FFFFFFFFFFFFFFFFFFFFFFFF"
+                    //def causes = currentBuild.rawBuild.getCauses()
+                    //def specificCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
+                    //print cause
+                    //print specificCause
                 }
             }
         }
