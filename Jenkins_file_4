@@ -24,8 +24,10 @@ pipeline {
     }
     post { 
         always {
+            def causes = currentBuild.rawBuild.getCauses()
+            def specificCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
             emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}, cause is ${causes}, specific cause is ${specificCause}",
                to: 'savitha.senguttuvan@seagate.com'
         }
         success {
