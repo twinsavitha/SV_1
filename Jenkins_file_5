@@ -55,7 +55,7 @@ pipeline {
     }
     post { 
         always {
-            def causes4 = currentBuild.rawBuild.getCauses()
+            //def causes4 = currentBuild.rawBuild.getCauses()
             emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n short description: ${currentBuild.rawBuild.getCauses().properties.shortDescription}\n More info at: ${env.BUILD_URL}",
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}, cause is ${currentBuild.rawBuild.getCauses()}, specific cause is ${currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)}",
                to: 'savitha.senguttuvan@seagate.com'
