@@ -23,6 +23,7 @@ pipeline {
                     print "DDDDDDDDDDDDDDDDDDDDD"
                     def a = currentBuild.rawBuild.getCauses().properties
                     print a
+                    print a.shortDescription
                     print "EEEEEEEEEEEEEEEEEEEEE"
                     //echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
                     //print "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
