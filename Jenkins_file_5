@@ -39,10 +39,12 @@ pipeline {
                     def causes4 = currentBuild.rawBuild.getCauses()
                     def j=0
                     for (cause4 in causes4) { 
-                        echo "cause4 ${j++} : ${cause4.getShortDescription()}"
+                        echo "cause4 ${j++} : ${cause4.getShortDescription()}" //this is not depricated and this is a valid way of doing
                     }
                     print causes4
                     print "FFFFFFFFFFFFFFFFFFFFFFFF"
+                    print causes4[0].getShortDescription()
+                    print "GGGGGGGGGG"
                 }
             }
         }
