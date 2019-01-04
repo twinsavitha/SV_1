@@ -30,23 +30,14 @@ pipeline {
                     for (cause in causes) { 
                         echo "cause ${i++} : ${cause.getShortDescription()}"
                     }
-                    //print currentBuild.rawBuild.getCauses().class.getShortDescription()
                     print "FFFFFFFFFFFFFFFFFFFFFFFF"
-                    //echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
-                    //print "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
-                    //echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
-                    //print "FFFFFFFFFFFFFFFFFFFFFFFF"
-                    //def causes = currentBuild.rawBuild.getCauses()
-                    //def specificCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
-                    //print cause
-                    //print specificCause
                 }
             }
         }
     }
     post { 
         always {
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n short description: ${currentBuild.rawBuild.getCause().getShortDescription()}\n More info at: ${env.BUILD_URL}",
+            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n short description: ${currentBuild.rawBuild.getCauses().properties.shortDescription}\n More info at: ${env.BUILD_URL}",
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}, cause is ${currentBuild.rawBuild.getCauses()}, specific cause is ${currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)}",
                to: 'savitha.senguttuvan@seagate.com'
         }
