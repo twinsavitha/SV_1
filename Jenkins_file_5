@@ -25,7 +25,12 @@ pipeline {
                     print a
                     print a.shortDescription
                     print "EEEEEEEEEEEEEEEEEEEEE"
-                    print currentBuild.rawBuild.getCauses().class.getShortDescription()
+                    def causes = currentBuild.rawBuild.getAction(hudson.model.CauseAction)
+                    def i=0
+                    for (cause in causes) { 
+                        echo "cause ${i++} : ${cause.getShortDescription()}"
+                    }
+                    //print currentBuild.rawBuild.getCauses().class.getShortDescription()
                     print "FFFFFFFFFFFFFFFFFFFFFFFF"
                     //echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
                     //print "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
