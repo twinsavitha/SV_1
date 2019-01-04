@@ -20,7 +20,7 @@ pipeline {
                     print "CCCCCCCCCCCCCCCCCCCCCCCCCC"
                     //echo "${currentBuild.getBuildCauses()}" // same as currentBuild.getBuildCauses()
                     echo "${currentBuild.rawBuild.getCauses()}"
-                    print "DDDDDDDDDDDDDDDDDDDD"
+                    print "DDDDDDDDDDDDDDDDDDDDD"
                     def a = currentBuild.rawBuild.getCauses().properties
                     print a
                     print "EEEEEEEEEEEEEEEEEEEEE"
