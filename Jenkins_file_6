@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM('H 0 1 1 0')
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr:'100'))
+    }
+    stages {
+        stage("Parameters Check"){
+            steps {
+                script{
+                    print "AAAAAAAAAAAAAAAAAAAA"
+                    
+                }
+            }
+        }
+    }
+    post { 
+        always {
+            //def causes4 = currentBuild.rawBuild.getCauses()
+            script {
+                def causes5 = currentBuild.rawBuild.getCauses()
+                STR2 = ""
+                for (cause5 in causes5) { 
+                    STR2  = STR2 + "${cause5.getShortDescription()}" + '\n'
+                }
+            }
+            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n short description: ${STR2} More info at: ${env.BUILD_URL}",
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+               to: 'savitha.senguttuvan@seagate.com'
+        }
+        success {
+            echo "Post::Success"
+        }
+    }
+}
