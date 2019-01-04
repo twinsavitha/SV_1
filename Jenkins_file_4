@@ -21,7 +21,7 @@ pipeline {
                     //echo "${currentBuild.getBuildCauses()}" // same as currentBuild.getBuildCauses()
                     echo "${currentBuild.rawBuild.getCauses()}"
                     print "DDDDDDDDDDDDDDDDDDDD"
-                    def a = currentBuild.rawBuild.getCauses()
+                    def a = currentBuild.rawBuild.getCauses().properties
                     print a
                     print "EEEEEEEEEEEEEEEEEEEEE"
                     //echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
