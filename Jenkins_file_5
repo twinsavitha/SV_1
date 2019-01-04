@@ -31,6 +31,10 @@ pipeline {
                         echo "cause ${i++} : ${cause.getShortDescription()}"
                     }
                     print "FFFFFFFFFFFFFFFFFFFFFFFF"
+                    print "EEEEEEEEEEEEEEEEEEEEE"
+                    def causes2 = currentBuild.rawBuild.getAction(hudson.model.CauseAction).getCauses()
+                    print causes2
+                    print "FFFFFFFFFFFFFFFFFFFFFFFF"
                 }
             }
         }
