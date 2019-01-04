@@ -43,7 +43,7 @@ pipeline {
                     for (cause4 in causes4) { 
                         echo "cause4 ${j++} : ${cause4.getShortDescription()}" //this is not depricated and this is a valid way of doing
                         cause_map["cause4 ${j++}"] = "${cause4.getShortDescription()}"
-                        str + = "${cause4.getShortDescription()}" + '\n'
+                        str  = str + "${cause4.getShortDescription()}" + '\n'
                     }
                     print causes4
                     print cause_map
