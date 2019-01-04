@@ -58,11 +58,12 @@ pipeline {
         }
     }
     post { 
+        def str2 = ""
         always {
             //def causes4 = currentBuild.rawBuild.getCauses()
             script {
                 def causes5 = currentBuild.rawBuild.getCauses()
-                def str2 = ""
+                
                 for (cause5 in causes5) { 
                     str2  = str2 + "${cause5.getShortDescription()}" + '\n'
                 }
