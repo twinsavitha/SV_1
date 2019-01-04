@@ -39,9 +39,11 @@ pipeline {
                     def causes4 = currentBuild.rawBuild.getCauses()
                     def j=0
                     def cause_map = [:]
+                    def str
                     for (cause4 in causes4) { 
                         echo "cause4 ${j++} : ${cause4.getShortDescription()}" //this is not depricated and this is a valid way of doing
                         cause_map["cause4 ${j++}"] = "${cause4.getShortDescription()}"
+                        str + = "${cause4.getShortDescription()}" + '\n'
                     }
                     print causes4
                     print cause_map
@@ -49,6 +51,8 @@ pipeline {
                     print "FFFFFFFFFFFFFFFFFFFFFFFF"
                     print causes4[0].getShortDescription()
                     print "GGGGGGGGGG"
+                    print str
+                    print "HHHHHHHHHHH"
                 }
             }
         }
