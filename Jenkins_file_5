@@ -34,6 +34,8 @@ pipeline {
                     print "EEEEEEEEEEEEEEEEEEEEE"
                     def causes2 = currentBuild.rawBuild.getAction(hudson.model.CauseAction).getCauses()
                     print causes2
+                    def causes3 = currentBuild.rawBuild.getAction(hudson.model.CauseAction).getShortDescription()
+                    print causes3
                     print "FFFFFFFFFFFFFFFFFFFFFFFF"
                 }
             }
