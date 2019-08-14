@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM('H 0 1 1 0')
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr:'100'))
+    }
+
+    stages {
+        stage("Parameters Check"){
+            steps {
+                script{
+                    print "AAAAAAAAAAAAAAAAAAAA"
+                    echo "${WORKSPACE}"
+                    print "CCCCCCCCCCCCCCCCCCCCCCCCCC"
+                    sleep(10000)
+                }
+            }
+        }
+    }
+    post {
+        success {
+            echo "Post::Success"
+        }
+    }
+}
+
