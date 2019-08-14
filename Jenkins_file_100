@@ -15,7 +15,7 @@ pipeline {
                     print "AAAAAAAAAAAAAAAAAAAA"
                     echo "${WORKSPACE}"
                     print "CCCCCCCCCCCCCCCCCCCCCCCCCC"
-                    sleep(10000)
+                    sleep(10)
                 }
             }
         }
